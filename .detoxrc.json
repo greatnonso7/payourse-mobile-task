@@ -4,9 +4,10 @@
   "skipLegacyWorkersInjection": true,
   "apps": {
     "ios": {
-      "build": "xcodebuild -workspace ios/cryptoMobile.xcworkspace -scheme pushdemo -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.app",
-      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/cryptoMobile.app"
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/cryptoMobile.app",
+      "build": "xcodebuild -workspace ios/cryptoMobile.xcworkspace -scheme cryptoMobile -sdk iphonesimulator -derivedDataPath ios/build"
+
     },
     "android": {
       "type": "android.apk",
