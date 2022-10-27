@@ -31,6 +31,17 @@ export const styles = StyleSheet.create({
     marginTop: hp(40),
     marginHorizontal: wp(24),
   },
+  searchInputText: {
+    width: wp(327),
+    height: hp(55),
+    borderWidth: 1,
+    borderColor: colors.LIGHT_GREY,
+    borderRadius: hp(16),
+    paddingHorizontal: wp(15),
+    fontSize: hp(16),
+    fontWeight: '500',
+    color: colors.WHITE,
+  },
   cryptoAmountText: {
     color: colors.WHITE,
     fontWeight: '600',

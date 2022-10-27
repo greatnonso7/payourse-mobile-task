@@ -15,10 +15,13 @@ export const Crypto = {
       dispatch.Crypto.setError(false);
       try {
         const api = await cryptoApi.fetchCrypto();
-        console.log(api);
         if (api) {
+          const res = Object.entries(api?.data?.rates).map(([name, obj]) => ({
+            name,
+            ...obj,
+          }));
           dispatch.Crypto.setState({
-            cryptoTokens: api?.data?.rates,
+            cryptoTokens: res,
           });
         }
       } catch (error) {

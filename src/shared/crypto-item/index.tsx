@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { cryptoIcons } from '../../constants';
 import colors from '../../styles/colors';
 import { hp, wp } from '../responsive-dimension';
@@ -7,24 +7,30 @@ import { hp, wp } from '../responsive-dimension';
 interface CryptoItemProps {
   title: string;
   item: any;
+  onComplete: (item: any) => void;
 }
 
-const CryptoItem = ({ item }: CryptoItemProps) => {
+const CryptoItem = ({ item, onComplete }: CryptoItemProps) => {
   const found = cryptoIcons.find(
-    e => e.name === item[0]?.slice(0, 3).toLowerCase(),
+    e => e.name === item.name?.slice(0, 3).toLowerCase(),
   )?.icon;
 
+  const data = { icon: found, item };
+
   return (
-    <View style={styles.cryptoItemContainer}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={() => onComplete(data)}
+      style={styles.cryptoItemContainer}>
       <Image source={found} resizeMode="contain" style={styles.cryptoIcon} />
       <View style={styles.cryptoItemBodyContainer}>
-        <Text style={styles.cryptoText}>{item[0]}</Text>
+        <Text style={styles.cryptoText}>{item.name}</Text>
         <Text style={styles.amountText}>
-          {item[0]?.includes('NGN') ? '₦ ' : '$ '}
-          {item[1]?.rate?.toLocaleString()}
+          {item?.name?.includes('NGN') ? '₦ ' : '$ '}
+          {item?.rate?.toLocaleString()}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
