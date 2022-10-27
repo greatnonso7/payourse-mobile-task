@@ -32,7 +32,8 @@ const Home = () => {
 
   useEffect(() => {
     fetchTokens();
-  }, [fetchTokens]);
+    setSearchData(cryptoTokens);
+  }, [cryptoTokens, fetchTokens]);
 
   const [searchData, setSearchData] = useState(cryptoTokens || []);
 
@@ -101,11 +102,7 @@ const Home = () => {
           {searchData?.map((item, index) => {
             return (
               <View key={index}>
-                <CryptoItem
-                  item={item}
-                  title={''}
-                  onComplete={onPressCryptoItem}
-                />
+                <CryptoItem item={item} onComplete={onPressCryptoItem} />
               </View>
             );
           })}

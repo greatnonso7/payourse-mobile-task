@@ -5,7 +5,6 @@ import colors from '../../styles/colors';
 import { hp, wp } from '../responsive-dimension';
 
 interface CryptoItemProps {
-  title: string;
   item: any;
   onComplete: (item: any) => void;
 }
